@@ -1,65 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
 import {
+  Button,
   ImageBackground,
-  View,
-  StyleSheet,
-  Dimensions,
   Text,
   TextInput,
   TouchableOpacity,
+  View,
+  StyleSheet,
+  Dimensions,
 } from "react-native";
 
 const windowWidth = Dimensions.get("window").width; // Для ширини екрану
 const windowHeight = Dimensions.get("window").height; // Для висоти екрану
 
 export const RegistrationScreen = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
   return (
     <View style={styles.container}>
       <ImageBackground
         source={require("../assets/images/photoBg.png")}
-        style={{ width: windowWidth, height: windowHeight }}
+        style={styles.imageBackground}
       >
-        <View style={styles.image}></View>
         <View style={styles.contentContainer}>
-          <Text style={styles.heading}>Реєстрація</Text>
-
+          <Text style={styles.title}>Реєстрація</Text>
           <TextInput style={styles.input} placeholder="Логін" />
-
           <TextInput
             style={styles.input}
             placeholder="Адреса електронної пошти"
           />
-
-          <View style={styles.passwordContainer}>
-            <TextInput
-              style={styles.input}
-              placeholder="Пароль"
-              secureTextEntry={!showPassword}
-            />
-            <TouchableOpacity
-              style={styles.showPasswordButton}
-              onPress={toggleShowPassword}
-            >
-              <Text style={styles.showPasswordButtonText}>
-                {showPassword ? "Приховати" : "Показати"}
+          <TextInput style={styles.input} placeholder="Пароль" />
+          <Button
+            style={styles.button}
+            title="Зареєструватися"
+            onPress={() => {}}
+          />
+          <View style={styles.registerContainer}>
+            <Text style={styles.registerText}>Вже є акаунту?</Text>
+            <TouchableOpacity onPress={() => {}}>
+              <Text style={[styles.registerText, styles.registerLink]}>
+                Увійти
               </Text>
-            </TouchableOpacity>
-          </View>
-
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Зареєструватися</Text>
-          </TouchableOpacity>
-
-          <View style={styles.loginContainer}>
-            <Text style={styles.loginText}>Вже є акаунт?</Text>
-            <TouchableOpacity>
-              <Text style={styles.loginLink}>Увійти</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -70,29 +49,34 @@ export const RegistrationScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    position: "relative",
+  },
+  imageBackground: {
     flex: 1,
+    width: windowWidth,
+    height: windowHeight,
   },
   contentContainer: {
-    flex: 1,
+    display: "flex",
     gap: 16,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-    width: "100%",
-    height: windowHeight * 0.7,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 30,
+    backgroundColor: "rgba(255, 255, 255, 1)",
+    paddingTop: 32,
+    paddingBottom: 144,
+    paddingLeft: 16,
+    paddingRight: 16,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
     position: "absolute",
     bottom: 0,
+    left: 0,
+    width: windowWidth,
   },
-  heading: {
-    fontSize: 30,
+  title: {
     fontWeight: "500",
-    marginTop: 94,
-    marginBottom: 20,
+    fontSize: 30,
+    lineHeight: 35,
     textAlign: "center",
+    color: "#212121",
   },
   input: {
     width: "100%",
@@ -103,62 +87,21 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
   },
-  passwordContainer: {
-    position: "relative",
-    width: "100%",
-    marginBottom: 27,
-  },
-  showPasswordButton: {
-    position: "absolute",
-    right: 10,
-    top: 10,
-    padding: 5,
-  },
-  showPasswordButtonText: {
-    position: "absolute",
-    width: 72,
-    height: 19,
-    right: 16,
-    top: "calc((50% - 19px) / 2 + 0.5px)",
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: 16,
-    lineHeight: 19,
-    textAlign: "right",
-    color: "#1B4371",
-  },
   button: {
     backgroundColor: "#FF6C00",
-    width: "100%",
     borderRadius: 100,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingBottom: 16,
-    paddingTop: 16,
   },
-  buttonText: {
-    fontStyle: "normal",
-    fontWeight: "400",
-    fontSize: 16,
-    lineHeight: 19,
-    color: "rgba(255, 255, 255, 1)",
-    height: 19,
-    textAlign: "center",
-  },
-  loginContainer: {
+  registerContainer: {
     flexDirection: "row",
+    justifyContent: "center",
   },
-  loginText: {
-    color: "black",
+  registerText: {
+    fontWeight: 400,
+    fontSize: 16,
+    color: "#212121",
   },
-  loginLink: {
+  registerLink: {
     color: "blue",
     marginLeft: 5,
-  },
-  image: {
-    backgroundColor: "rgba(246, 246, 246, 1)",
-    height: 120,
-    width: 120,
-    borderRadius: 16,
   },
 });

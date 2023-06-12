@@ -59,6 +59,8 @@ const styles = StyleSheet.create({
     paddingBottom: 144,
     paddingLeft: 16,
     paddingRight: 16,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
     position: "absolute",
     bottom: 0,
     left: 0,
@@ -89,6 +91,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   registerText: {
+    fontWeight: 400,
+    fontSize: 16,
     color: "#212121",
   },
   registerLink: {
