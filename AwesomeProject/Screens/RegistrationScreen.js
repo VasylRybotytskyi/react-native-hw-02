@@ -16,9 +16,31 @@ const windowHeight = Dimensions.get("window").height; // Для висоти е�
 
 export const RegistrationScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoginFocused, setLoginFocused] = useState(false);
+  const [isEmailFocused, setEmailFocused] = useState(false);
+  const [isPasswordFocused, setPasswordFocused] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleLoginFocus = () => {
+    setLoginFocused(true);
+  };
+  const handleLoginBlur = () => {
+    setLoginFocused(false);
+  };
+  const handleEmailFocus = () => {
+    setEmailFocused(true);
+  };
+  const handleEmailBlur = () => {
+    setEmailFocused(false);
+  };
+  const handlePasswordFocus = () => {
+    setPasswordFocused(true);
+  };
+  const handlePasswordBlur = () => {
+    setPasswordFocused(false);
   };
 
   return (
@@ -32,16 +54,28 @@ export const RegistrationScreen = () => {
             <AntDesign style={styles.add} name="pluscircleo" size={25} />
           </View>
           <Text style={styles.title}>Реєстрація</Text>
-          <TextInput style={styles.input} placeholder="Логін" />
           <TextInput
-            style={styles.input}
+            style={[styles.input, isLoginFocused && styles.inputFocused]}
+            placeholder="Логін"
+            onFocus={handleLoginFocus}
+            onBlur={handleLoginBlur}
+          />
+          <TextInput
+            style={[styles.input, isEmailFocused && styles.inputFocused]}
             placeholder="Адреса електронної пошти"
+            onFocus={handleEmailFocus}
+            onBlur={handleEmailBlur}
           />
           <View style={styles.passwordInputContainer}>
             <TextInput
-              style={styles.passwordInput}
+              style={[
+                styles.passwordInput,
+                isPasswordFocused && styles.inputFocused,
+              ]}
               placeholder="Пароль"
               secureTextEntry={!showPassword}
+              onFocus={handlePasswordFocus}
+              onBlur={handlePasswordBlur}
             />
             <TouchableOpacity onPress={togglePasswordVisibility}>
               <Text style={styles.passwordToggleText}>
@@ -106,6 +140,9 @@ const styles = StyleSheet.create({
     borderColor: "rgba(232, 232, 232, 1)",
     borderRadius: 5,
     paddingHorizontal: 10,
+  },
+  inputFocused: {
+    borderColor: "#FF6C00",
   },
   buttonContainer: {
     width: "100%",
