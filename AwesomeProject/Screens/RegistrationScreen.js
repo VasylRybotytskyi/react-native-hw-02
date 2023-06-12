@@ -25,6 +25,7 @@ export const RegistrationScreen = () => {
         source={require("../assets/images/photoBg.png")}
         style={{ width: windowWidth, height: windowHeight }}
       >
+        <View style={styles.image}></View>
         <View style={styles.contentContainer}>
           <Text style={styles.heading}>Реєстрація</Text>
 
@@ -153,5 +154,11 @@ const styles = StyleSheet.create({
   loginLink: {
     color: "blue",
     marginLeft: 5,
+  },
+  image: {
+    backgroundColor: "rgba(246, 246, 246, 1)",
+    height: 120,
+    width: 120,
+    borderRadius: 16,
   },
 });
