@@ -21,6 +21,10 @@ export const RegistrationScreen = () => {
         style={styles.imageBackground}
       >
         <View style={styles.contentContainer}>
+          <View style={styles.image}>
+            <Text style={styles.add}>+</Text>
+            {/* <Image source={require("../assets/images/add.png")} /> */}
+          </View>
           <Text style={styles.title}>Реєстрація</Text>
           <TextInput style={styles.input} placeholder="Логін" />
           <TextInput
@@ -60,7 +64,7 @@ const styles = StyleSheet.create({
     display: "flex",
     gap: 16,
     backgroundColor: "rgba(255, 255, 255, 1)",
-    paddingTop: 32,
+    paddingTop: 92,
     paddingBottom: 144,
     paddingLeft: 16,
     paddingRight: 16,
@@ -70,6 +74,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: windowWidth,
+    alignItems: "center", // Відцентровує горизонтально
   },
   title: {
     fontWeight: "500",
@@ -90,6 +95,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#FF6C00",
     borderRadius: 100,
+    width: "100%",
   },
   registerContainer: {
     flexDirection: "row",
@@ -98,10 +104,24 @@ const styles = StyleSheet.create({
   registerText: {
     fontWeight: 400,
     fontSize: 16,
-    color: "#212121",
+    color: "rgba(27, 67, 113, 1)",
   },
   registerLink: {
-    color: "blue",
+    color: "rgba(27, 67, 113, 1)",
     marginLeft: 5,
+  },
+  image: {
+    position: "absolute",
+    width: 120,
+    height: 120,
+    backgroundColor: "#F6F6F6",
+    borderRadius: 16,
+    top: -60,
+  },
+  add: {
+    position: "absolute",
+    fontSize: 30,
+    bottom: 20,
+    right: -14,
   },
 });
