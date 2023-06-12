@@ -9,7 +9,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <PostsScreen /> */}
-      {/* <RegistrationScreen /> */}
+      <RegistrationScreen />
       {/* <StatusBar style="auto" /> */}
       {/* <LoginScreen /> */}
     </View>

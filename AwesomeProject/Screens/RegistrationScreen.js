@@ -10,6 +10,8 @@ import {
   Dimensions,
 } from "react-native";
 
+import { AntDesign } from "@expo/vector-icons";
+
 const windowWidth = Dimensions.get("window").width; // Для ширини екрану
 const windowHeight = Dimensions.get("window").height; // Для висоти екрану
 
@@ -22,8 +24,7 @@ export const RegistrationScreen = () => {
       >
         <View style={styles.contentContainer}>
           <View style={styles.image}>
-            <Text style={styles.add}>+</Text>
-            {/* <Image source={require("../assets/images/add.png")} /> */}
+            <AntDesign style={styles.add} name="pluscircleo" size={25} />
           </View>
           <Text style={styles.title}>Реєстрація</Text>
           <TextInput style={styles.input} placeholder="Логін" />
@@ -120,8 +121,8 @@ const styles = StyleSheet.create({
   },
   add: {
     position: "absolute",
-    fontSize: 30,
     bottom: 20,
-    right: -14,
+    right: -12,
+    color: "rgba(255, 108, 0, 1)",
   },
 });
