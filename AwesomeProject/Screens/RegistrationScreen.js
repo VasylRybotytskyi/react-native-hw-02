@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  Button,
   ImageBackground,
   Text,
   TextInput,
@@ -9,13 +8,19 @@ import {
   StyleSheet,
   Dimensions,
 } from "react-native";
-
+import { Button } from "react-native-elements";
 import { AntDesign } from "@expo/vector-icons";
 
 const windowWidth = Dimensions.get("window").width; // Для ширини екрану
 const windowHeight = Dimensions.get("window").height; // Для висоти екрану
 
 export const RegistrationScreen = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -32,14 +37,23 @@ export const RegistrationScreen = () => {
             style={styles.input}
             placeholder="Адреса електронної пошти"
           />
-          <TextInput style={styles.input} placeholder="Пароль" />
-          <Button
-            style={styles.button}
-            title="Зареєструватися"
-            onPress={() => {}}
-          />
+          <View style={styles.passwordInputContainer}>
+            <TextInput
+              style={styles.passwordInput}
+              placeholder="Пароль"
+              secureTextEntry={!showPassword}
+            />
+            <TouchableOpacity onPress={togglePasswordVisibility}>
+              <Text style={styles.passwordToggleText}>
+                {showPassword ? "Сховати" : "Показати"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity style={styles.buttonContainer} onPress={() => {}}>
+            <Button title="Зареєструватися" buttonStyle={styles.button} />
+          </TouchableOpacity>
           <View style={styles.registerContainer}>
-            <Text style={styles.registerText}>Вже є акаунту?</Text>
+            <Text style={styles.registerText}>Вже є акаунт?</Text>
             <TouchableOpacity onPress={() => {}}>
               <Text style={[styles.registerText, styles.registerLink]}>
                 Увійти
@@ -86,24 +100,27 @@ const styles = StyleSheet.create({
   },
   input: {
     width: "100%",
-    height: 40,
+    height: 50,
     backgroundColor: "#F6F6F6",
     borderWidth: 1,
     borderColor: "rgba(232, 232, 232, 1)",
     borderRadius: 5,
     paddingHorizontal: 10,
   },
+  buttonContainer: {
+    width: "100%",
+  },
   button: {
     backgroundColor: "#FF6C00",
     borderRadius: 100,
-    width: "100%",
+    height: 50,
   },
   registerContainer: {
     flexDirection: "row",
     justifyContent: "center",
   },
   registerText: {
-    fontWeight: 400,
+    fontWeight: "400",
     fontSize: 16,
     color: "rgba(27, 67, 113, 1)",
   },
@@ -124,5 +141,26 @@ const styles = StyleSheet.create({
     bottom: 20,
     right: -12,
     color: "rgba(255, 108, 0, 1)",
+  },
+  passwordInputContainer: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderWidth: 1,
+    borderColor: "rgba(232, 232, 232, 1)",
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    backgroundColor: "#F6F6F6",
+  },
+  passwordInput: {
+    flex: 1,
+    height: 50,
+    backgroundColor: "#F6F6F6",
+  },
+  passwordToggleText: {
+    color: "#1B4371",
+    fontWeight: "400",
+    fontSize: 16,
   },
 });
