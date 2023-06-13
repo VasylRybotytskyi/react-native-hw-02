@@ -8,8 +8,8 @@ import { PostsScreen } from "./Screens/PostsScreen";
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <PostsScreen /> */}
-      <RegistrationScreen />
+      <PostsScreen />
+      {/* <RegistrationScreen /> */}
       {/* <StatusBar style="auto" /> */}
       {/* <LoginScreen /> */}
     </View>
